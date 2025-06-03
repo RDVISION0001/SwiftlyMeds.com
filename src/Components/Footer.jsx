@@ -15,7 +15,7 @@ function Footer() {
             <p className="text-sm">Varanasi - 221007, Uttar Pradesh, India</p>
             <p className="text-sm mt-2">
               <a href="tel:+917943438588" className="text-blue-300 hover:text-blue-100">
-                07943438588
+              088580 43370
               </a>
             </p>
             <p className="text-sm">

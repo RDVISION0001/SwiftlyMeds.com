@@ -9,14 +9,42 @@ function TopNav() {
 
   return (
     <>
-      <nav className="bg-white shadow-md">
+      <nav className="bg-green-100 shadow-md">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            {/* Logo */}
-            <div className="flex items-center">
-              <a href="/" className="text-2xl font-bold text-secondary">
+            {/* Logo and Delivery Address */}
+            <div className="flex items-center space-x-6">
+              {/* <a href="/" className="text-2xl font-bold text-secondary">
                 <img src={logo} alt="Swiftly Meds Logo" className="h-10" />
-              </a>
+              </a> */}
+
+              {/* Delivery Address */}
+              <div className="hidden md:flex items-center cursor-pointer group">
+                <svg
+                  className="w-5 h-5 text-gray-600 group-hover:text-primary mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  ></path>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  ></path>
+                </svg>
+                <div>
+                  <p className="text-xs text-gray-500 group-hover:text-primary">Deliver to</p>
+                  <p className="text-sm font-medium text-gray-700 group-hover:text-primary">Select Address</p>
+                </div>
+              </div>
             </div>
 
             {/* Search Bar */}

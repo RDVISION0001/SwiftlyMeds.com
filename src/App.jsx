@@ -4,16 +4,7 @@ import './App.css';
 import TopNav from './Components/TopNav';
 import Footer from './Components/Footer';
 import Login from './Auth/SignIn';
-
-
-function Home() {
-  return (
-    <div className="container mx-auto px-4 py-8 text-center">
-      <h1 className="text-3xl font-bold mb-4 text-primary">Welcome to Swiftly Meds</h1>
-      <p className="text-lg text-gray-600">Your trusted online pharmacy for medicines and health products.</p>
-    </div>
-  );
-}
+import Home from './Pages/Home';
 
 function Medicines() {
   return <div className="container mx-auto px-4 py-8"><h2 className="text-primary">Medicines</h2></div>;

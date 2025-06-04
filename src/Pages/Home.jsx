@@ -3,7 +3,8 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { useTheme } from '../Auth/ThemeContext';
 import TodayTrending from '../Pages/TodayTrending';
-import Products from './Products';
+import Products from './Products/Product';
+import NewsLetter from './NewsLetter';
 
 function Home() {
   const { styles } = useTheme();
@@ -44,6 +45,7 @@ function Home() {
       <div className={`w-full px-4 py-2 items-center ${styles.container}`}>
         <Products />
       </div>
+      <NewsLetter/>
     </>
   );
 }

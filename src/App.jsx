@@ -2,10 +2,13 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import { ThemeProvider } from './Auth/ThemeContext';
-import TopNav from './Components/TopNav';
+import TopNav from './Components/Topnav';
 import Footer from './Components/Footer';
 import Login from './Auth/SignIn';
 import Home from './Pages/Home';
+
+import AddToCart from './Pages/Products/AddToCart';
+
 
 function Medicines() {
   const { styles } = useTheme();
@@ -167,6 +170,9 @@ function App() {
               <Route path="/terms" element={<Terms />} />
               <Route path="/returns" element={<Returns />} />
               <Route path="/contact" element={<Contact />} />
+
+
+              <Route path="/add-to-cart" element={<AddToCart />} />
             </Routes>
           </main>
           <Footer />

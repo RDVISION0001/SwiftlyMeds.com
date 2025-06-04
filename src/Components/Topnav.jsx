@@ -187,7 +187,7 @@ function TopNav() {
               >
                 <span className="hidden md:inline">Sign-Up</span>
               </button>
-              <Link to="/cart" className={`flex items-center ${iconColor} hover:${styles.primary}`}>
+              <Link to="/add-to-cart" className={`flex items-center ${iconColor} hover:${styles.primary}`}>
                 <svg
                   className="w-6 h-6 mr-1"
                   fill="none"

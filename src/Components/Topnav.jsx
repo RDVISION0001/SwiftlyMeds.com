@@ -9,9 +9,21 @@ function TopNav() {
   const { theme, toggleTheme, styles } = useTheme();
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
+  const [isSearchDropdownOpen, setIsSearchDropdownOpen] = useState(false);
+  const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
 
   // Determine icon color based on theme
   const iconColor = theme === 'light' ? 'text-gray-600' : 'text-gray-300';
+
+  // Categories for the dropdowns
+  const categories = [
+    { name: 'Medicines', path: '/medicines' },
+    { name: 'Health Products', path: '/health-products' },
+    { name: 'Health Library', path: '/health-library' },
+    { name: 'Lab Tests', path: '/lab-tests' },
+    { name: 'Consult Doctors', path: '/consult-doctors' },
+    { name: 'Offers', path: '/offers' },
+  ];
 
   return (
     <>
@@ -60,13 +72,15 @@ function TopNav() {
               </div>
             </div>
 
-            {/* Search Bar */}
-            <div className="flex-grow mx-4 max-w-2xl">
-              <div className="relative">
+            {/* Search Bar with Dropdown and Category Dropdown Button */}
+            <div className="flex-grow mx-4 max-w-2xl flex items-center space-x-2">
+              <div className="relative flex-grow">
                 <input
                   type="text"
                   placeholder="Search for Medicines, Health Products and more"
                   className={`w-full py-2 px-4 pr-10 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm ${styles.text} ${styles.container}`}
+                  onFocus={() => setIsSearchDropdownOpen(true)}
+                  onBlur={() => setTimeout(() => setIsSearchDropdownOpen(false), 200)}
                 />
                 <button className="absolute right-3 top-1/2 transform -translate-y-1/2">
                   <svg
@@ -84,6 +98,64 @@ function TopNav() {
                     ></path>
                   </svg>
                 </button>
+                {/* Search Category Dropdown */}
+                {isSearchDropdownOpen && (
+                  <div className={`absolute top-full left-0 w-full ${styles.container} rounded-md shadow-lg z-10 mt-1`}>
+                    <ul className="py-2">
+                      {categories.map((category) => (
+                        <li key={category.name}>
+                          <Link
+                            to={category.path}
+                            className={`block px-4 py-2 text-sm ${iconColor} hover:${styles.primary} hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-150`}
+                          >
+                            {category.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+              {/* Category Dropdown Button */}
+              <div className="relative">
+                <button
+                  onClick={() => setIsCategoryDropdownOpen(!isCategoryDropdownOpen)}
+                  className={`py-2 px-4 rounded-full border border-gray-300 ${styles.text} ${styles.container} flex items-center text-sm ${iconColor} hover:${styles.primary}`}
+                >
+                  Categories
+                  <svg
+                    className={`w-4 h-4 ml-2 ${iconColor}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </button>
+                {/* Category Dropdown Menu */}
+                {isCategoryDropdownOpen && (
+                  <div className={`absolute top-full left-0 w-48 ${styles.container} rounded-md shadow-lg z-10 mt-1`}>
+                    <ul className="py-2">
+                      {categories.map((category) => (
+                        <li key={category.name}>
+                          <Link
+                            to={category.path}
+                            className={`block px-4 py-2 text-sm ${iconColor} hover:${styles.primary} hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-150`}
+                            onClick={() => setIsCategoryDropdownOpen(false)}
+                          >
+                            {category.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -104,7 +176,7 @@ function TopNav() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
-                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7 h14a7 7 0 00-7-7z"
                   ></path>
                 </svg>
                 <span className="hidden md:inline">Sign-In</span>

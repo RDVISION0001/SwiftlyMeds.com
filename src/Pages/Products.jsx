@@ -203,7 +203,7 @@ function Products() {
                 {categoryProducts.map((product) => (
                   <div
                     key={product.id}
-                    className={`${styles.container} rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 relative flex-shrink-0 w-64 flex flex-col h-96`}
+                    className={`${styles.container} rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex-shrink-0 w-64 flex flex-col min-h-96`}
                   >
                     <div className="relative">
                       <img src={product.image} alt={product.name} className="w-full h-32 object-cover" />
@@ -214,7 +214,7 @@ function Products() {
                       )}
                       <button
                         onClick={() => toggleWishlist(product.id)}
-                        className={`${styles.container} bg-opacity-80 p-1 rounded-full hover:bg-opacity-100`}
+                        className={`${styles.container} bg-opacity-80 p-1 rounded-full hover:bg-opacity-100 absolute top-2 right-2`}
                       >
                         {wishlist.includes(product.id) ? (
                           <FaHeart className="text-red-500" />
@@ -273,9 +273,9 @@ function Products() {
                       <button
                         onClick={() => addToCart(product.id)}
                         disabled={!product.inStock}
-                        className={`w-full flex items-center justify-center py-1 px-2 rounded-md text-sm ${product.inStock
-                            ? `bg-green-700 hover:bg-blue-600 text-white`
-                            : `bg-gray-300 cursor-not-allowed ${styles.text}`
+                        className={`w-full flex items-center justify-center py-1 px-2 rounded-md text-sm mt-auto ${product.inStock
+                          ? `bg-green-700 hover:bg-blue-600 text-white`
+                          : `bg-gray-300 cursor-not-allowed ${styles.text}`
                           }`}
                       >
                         <FaShoppingCart className="mr-1" />

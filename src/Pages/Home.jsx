@@ -1,10 +1,13 @@
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { useTheme } from '../Auth/ThemeContext';
 import TodayTrending from '../Pages/TodayTrending';
 import Products from './Products';
 
 function Home() {
+  const { styles } = useTheme();
+
   const images = [
     'https://www.netmeds.com/images/cms/aw_rbslider/slides/1743514063_Web_Home-Banner.jpg',
     'https://www.netmeds.com/images/cms/aw_rbslider/slides/1746624933_Web_Home-Banner.jpg',
@@ -13,8 +16,8 @@ function Home() {
 
   return (
     <>
-      <div className=" bg-gray-100 w-full">
-        <div className="w-full px-4 py-2"> {/* Removed container, set px-0 */}
+      <div className={`w-full ${styles.background}`}>
+        <div className="w-full px-4 py-2">
           <Carousel
             showArrows={true}
             autoPlay={true}
@@ -38,9 +41,9 @@ function Home() {
         </div>
         <TodayTrending />
       </div>
-      <div className='w-full px-42 py-2 item-center'>
+      <div className={`w-full px-4 py-2 items-center ${styles.container}`}>
         <Products />
-      </div >
+      </div>
     </>
   );
 }

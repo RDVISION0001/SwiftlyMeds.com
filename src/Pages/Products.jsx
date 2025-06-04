@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaStar, FaRegStar, FaShoppingCart, FaHeart, FaRegHeart } from 'react-icons/fa';
 import { MdLocalOffer } from 'react-icons/md';
+import { useTheme } from '../Auth/ThemeContext';
 
 const categories = [
   { id: 'baby-care', name: 'Baby Care' },
@@ -151,6 +152,7 @@ const products = [
 ];
 
 function Products() {
+  const { styles } = useTheme();
   const [wishlist, setWishlist] = useState([]);
 
   const addToCart = (productId) => {
@@ -184,8 +186,8 @@ function Products() {
   };
 
   return (
-    <div className="w-full px-4 py-3 bg-gray-100 items-center">
-      <h1 className="text-2xl font-bold text-gray-600 mb-4">Healthcare Products</h1>
+    <div className={`w-full px-4 py-3 ${styles.container} ${styles.text}`}>
+      <h1 className={`text-2xl font-bold ${styles.text} mb-4`}>Healthcare Products</h1>
 
       {/* Categories and Products */}
       {categories.map((category) => {
@@ -194,14 +196,14 @@ function Products() {
 
         return (
           <div key={category.id} className="mb-6">
-            <h2 className="text-xl font-bold text-gray-800 mb-2">{category.name}</h2>
-            <p className="text-gray-600 text-sm mb-3">{getCategoryDescription(category.id)}</p>
+            <h2 className={`text-xl font-bold ${styles.text} mb-2`}>{category.name}</h2>
+            <p className={`text-sm ${styles.text} opacity-80 mb-3`}>{getCategoryDescription(category.id)}</p>
             <div className="overflow-x-auto scrollbar-hide px-4">
               <div className="inline-flex space-x-4 mx-auto">
                 {categoryProducts.map((product) => (
                   <div
                     key={product.id}
-                    className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 relative flex-shrink-0 w-64 flex flex-col h-96"
+                    className={`${styles.container} rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 relative flex-shrink-0 w-64 flex flex-col h-96`}
                   >
                     <div className="relative">
                       <img src={product.image} alt={product.name} className="w-full h-32 object-cover" />
@@ -212,33 +214,39 @@ function Products() {
                       )}
                       <button
                         onClick={() => toggleWishlist(product.id)}
-                        className="absolute top-1 right-1 bg-white bg-opacity-80 p-1 rounded-full hover:bg-opacity-100"
+                        className={`${styles.container} bg-opacity-80 p-1 rounded-full hover:bg-opacity-100`}
                       >
                         {wishlist.includes(product.id) ? (
                           <FaHeart className="text-red-500" />
                         ) : (
-                          <FaRegHeart className="text-gray-600" />
+                          <FaRegHeart className={`${styles.text}`} />
                         )}
                       </button>
                     </div>
 
                     <div className="p-3 flex flex-col flex-grow">
-                      <h3 className="text-base font-semibold text-gray-800 mb-1">{product.name}</h3>
-                      <p className="text-xs text-gray-500 mb-1">By {product.manufacturer}</p>
+                      <h3 className={`text-base font-semibold ${styles.text} mb-1`}>{product.name}</h3>
+                      <p className={`text-xs ${styles.text} opacity-80 mb-1`}>By {product.manufacturer}</p>
 
                       <div className="flex items-center mb-1">
                         {renderRating(product.rating)}
-                        <span className="text-gray-600 text-xs ml-1">({product.rating})</span>
-                        <span className="text-gray-400 text-xs ml-2">• {product.reviews} reviews</span>
+                        <span className={`text-xs ${styles.text} ml-1`}>({product.rating})</span>
+                        <span className={`text-xs ${styles.text} opacity-80 ml-2`}>
+                          • {product.reviews} reviews
+                        </span>
                       </div>
 
                       <div className="flex items-center mb-2">
-                        <span className="text-lg font-bold text-blue-500">₹{product.price}</span>
+                        <span className={`text-lg font-bold ${styles.primary}`}>₹{product.price}</span>
                         {product.originalPrice && (
-                          <span className="text-xs text-gray-500 line-through ml-1">₹{product.originalPrice}</span>
+                          <span className={`text-xs ${styles.text} opacity-80 line-through ml-1`}>
+                            ₹{product.originalPrice}
+                          </span>
                         )}
                         {product.originalPrice && (
-                          <span className="text-xs bg-green-100 text-green-800 ml-2 px-1 py-0.5 rounded flex items-center">
+                          <span
+                            className={`text-xs bg-green-100 text-green-800 ml-2 px-1 py-0.5 rounded flex items-center`}
+                          >
                             <MdLocalOffer className="mr-1" />
                             {Math.round((1 - product.price / product.originalPrice) * 100)}% OFF
                           </span>
@@ -246,8 +254,8 @@ function Products() {
                       </div>
 
                       <div className="mb-2 flex-grow">
-                        <p className="text-xs font-medium mb-1">Key Benefits:</p>
-                        <ul className="text-xs text-gray-600 space-y-1">
+                        <p className={`text-xs font-medium ${styles.text} mb-1`}>Key Benefits:</p>
+                        <ul className={`text-xs ${styles.text} opacity-80 space-y-1`}>
                           {product.benefits.slice(0, 2).map((benefit, index) => (
                             <li key={index} className="flex items-start">
                               <span className="text-green-500 mr-1">•</span>
@@ -255,7 +263,9 @@ function Products() {
                             </li>
                           ))}
                           {product.benefits.length > 2 && (
-                            <li className="text-xs text-blue-500">+{product.benefits.length - 2} more</li>
+                            <li className={`text-xs ${styles.primary}`}>
+                              +{product.benefits.length - 2} more
+                            </li>
                           )}
                         </ul>
                       </div>
@@ -263,7 +273,9 @@ function Products() {
                       <button
                         onClick={() => addToCart(product.id)}
                         disabled={!product.inStock}
-                        className={`w-full flex items-center justify-center py-1 px-2 rounded-md text-sm ${product.inStock ? 'bg-green-700 hover:bg-blue-600 text-white' : 'bg-gray-300 cursor not-allowed text-gray-500'
+                        className={`w-full flex items-center justify-center py-1 px-2 rounded-md text-sm ${product.inStock
+                            ? `bg-green-700 hover:bg-blue-600 text-white`
+                            : `bg-gray-300 cursor-not-allowed ${styles.text}`
                           }`}
                       >
                         <FaShoppingCart className="mr-1" />
@@ -285,7 +297,7 @@ function Products() {
 function getCategoryDescription(categoryId) {
   const descriptions = {
     'baby-care': 'Gentle and safe products for your little ones. From diapers to baby shampoos, we have everything to keep your baby happy and healthy.',
-    'men-care': "Specialized products for men's health and wellness. Vitamins, grooming products, and more to support men's specific health needs.",
+    'men-care': "Specialized products for men's health and wellness. vitamins, grooming products, and more to support men's specific health needs.",
     'women-care': "Products designed for women's unique health requirements. Prenatal care, calcium supplements, and other essentials for women's wellbeing.",
     'old-age-care': 'Supportive products for senior citizens. Joint pain relief, blood sugar management, and other solutions for aging gracefully.',
     'health-devices': 'Modern healthcare devices for monitoring and maintaining your health at home. Accurate and easy-to-use medical equipment.',

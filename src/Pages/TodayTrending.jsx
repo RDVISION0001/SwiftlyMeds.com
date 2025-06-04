@@ -1,8 +1,11 @@
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { useTheme } from '../Auth/ThemeContext';
 
 function TodayTrending() {
+  const { styles } = useTheme();
+
   // Sample medical product data based on web search results
   const medicalProducts = [
     {
@@ -28,8 +31,8 @@ function TodayTrending() {
   ];
 
   return (
-    <div className="w-full px-0 py-4 bg-gray-100">
-      <h2 className="text-2xl font-bold text-center mb-4">Today's Trending </h2>
+    <div className={`w-full px-0 py-4 ${styles.container} ${styles.text}`}>
+      <h2 className={`text-2xl font-bold text-center mb-4 ${styles.text}`}>Today's Trending</h2>
       <Carousel
         showArrows={true}
         autoPlay={true}
@@ -43,17 +46,14 @@ function TodayTrending() {
         emulateTouch={true}
       >
         {medicalProducts.map((product) => (
-          <div
-            key={product.id}
-            className="p-2 h-full"
-          >
-            <div className="rounded-lg overflow-hidden flex flex-col h-full mx-2">
+          <div key={product.id} className="p-2 h-full">
+            <div className={`rounded-lg overflow-hidden flex flex-col h-full mx-2 ${styles.container}`}>
               <img
                 src={product.image}
                 alt={product.name}
                 className="w-full h-full object-cover rounded-lg"
                 onError={(e) => {
-                  e.target.onerror = null; 
+                  e.target.onerror = null;
                   e.target.src = "https://via.placeholder.com/300x400?text=Image+Not+Available";
                 }}
               />

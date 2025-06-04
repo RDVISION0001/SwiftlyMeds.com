@@ -184,7 +184,7 @@ function Products() {
   };
 
   return (
-    <div className="w-full px-4 py-3 bg-gray-100">
+    <div className="w-full px-4 py-3 bg-gray-100 items-center">
       <h1 className="text-2xl font-bold text-gray-600 mb-4">Healthcare Products</h1>
 
       {/* Categories and Products */}
@@ -201,7 +201,7 @@ function Products() {
                 {categoryProducts.map((product) => (
                   <div
                     key={product.id}
-                    className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 relative flex-shrink-0 w-64"
+                    className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 relative flex-shrink-0 w-64 flex flex-col h-96"
                   >
                     <div className="relative">
                       <img src={product.image} alt={product.name} className="w-full h-32 object-cover" />
@@ -222,7 +222,7 @@ function Products() {
                       </button>
                     </div>
 
-                    <div className="p-3">
+                    <div className="p-3 flex flex-col flex-grow">
                       <h3 className="text-base font-semibold text-gray-800 mb-1">{product.name}</h3>
                       <p className="text-xs text-gray-500 mb-1">By {product.manufacturer}</p>
 
@@ -245,7 +245,7 @@ function Products() {
                         )}
                       </div>
 
-                      <div className="mb-2">
+                      <div className="mb-2 flex-grow">
                         <p className="text-xs font-medium mb-1">Key Benefits:</p>
                         <ul className="text-xs text-gray-600 space-y-1">
                           {product.benefits.slice(0, 2).map((benefit, index) => (
@@ -263,7 +263,7 @@ function Products() {
                       <button
                         onClick={() => addToCart(product.id)}
                         disabled={!product.inStock}
-                        className={`w-full flex items-center justify-center py-1 px-2 rounded-md text-sm ${product.inStock ? 'bg-green-700 hover:bg-blue-600 text-white' : 'bg-gray-300 cursor-not-allowed text-gray-500'
+                        className={`w-full flex items-center justify-center py-1 px-2 rounded-md text-sm ${product.inStock ? 'bg-green-700 hover:bg-blue-600 text-white' : 'bg-gray-300 cursor not-allowed text-gray-500'
                           }`}
                       >
                         <FaShoppingCart className="mr-1" />

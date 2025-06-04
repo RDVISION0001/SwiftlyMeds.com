@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaStar, FaRegStar, FaShoppingCart, FaHeart, FaRegHeart } from 'react-icons/fa';
 import { MdLocalOffer } from 'react-icons/md';
 import { useTheme } from '../../Auth/ThemeContext';
 
 function ProductDetails({ product }) {
     const { styles } = useTheme();
+    const [quantity, setQuantity] = useState(1); // State for quantity
 
     // Static isInWishlist for UI display
     const isInWishlist = false;
@@ -24,6 +25,20 @@ function ProductDetails({ product }) {
             }
         }
         return stars;
+    };
+
+    // Handle quantity increment
+    const handleIncrement = () => {
+        if (product.inStock && quantity < product.stock) {
+            setQuantity(quantity + 1);
+        }
+    };
+
+    // Handle quantity decrement
+    const handleDecrement = () => {
+        if (quantity > 1) {
+            setQuantity(quantity - 1);
+        }
     };
 
     if (!product) {
@@ -94,15 +109,35 @@ function ProductDetails({ product }) {
                         </ul>
                     </div>
 
+                    {/* Quantity Selector */}
+                    <div className="flex items-center mb-4">
+                        <span className={`text-sm ${styles.text} mr-3`}>Quantity:</span>
+                        <button
+                            onClick={handleDecrement}
+                            disabled={quantity <= 1}
+                            className={`px-3 py-1 rounded-l-md border ${quantity <= 1 ? 'bg-gray-200 cursor-not-allowed' : 'bg-gray-100 hover:bg-gray-200'} ${styles.text}`}
+                        >
+                            -
+                        </button>
+                        <span className={`px-4 py-1 border-t border-b ${styles.text}`}>{quantity}</span>
+                        <button
+                            onClick={handleIncrement}
+                            disabled={!product.inStock || quantity >= product.stock}
+                            className={`px-3 py-1 rounded-r-md border ${!product.inStock || quantity >= product.stock ? 'bg-gray-200 cursor-not-allowed' : 'bg-gray-100 hover:bg-gray-200'} ${styles.text}`}
+                        >
+                            +
+                        </button>
+                    </div>
+
                     <button
                         disabled={!product.inStock}
                         className={`w-full flex items-center justify-center py-2 px-4 rounded-md text-base mt-auto ${product.inStock
-                                ? `bg-green-700 hover:bg-blue-600 text-white`
-                                : `bg-gray-300 cursor-not-allowed ${styles.text}`
+                            ? `bg-green-700 hover:bg-blue-600 text-white`
+                            : `bg-gray-300 cursor-not-allowed ${styles.text}`
                             }`}
                     >
                         <FaShoppingCart className="mr-2" />
-                        {product.inStock ? 'Add to Cart' : 'Out of Stock'}
+                        {product.inStock ? `Add ${quantity} to Cart` : 'Out of Stock'}
                     </button>
                 </div>
             </div>

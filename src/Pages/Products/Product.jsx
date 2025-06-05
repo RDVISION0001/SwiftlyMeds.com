@@ -176,7 +176,7 @@ function Product() {
 
   return (
     <div className={`w-full px-4 py-3 ${styles.container} ${styles.text}`}>
-      <h1 className={`text-2xl font-bold ${styles.text} mb-4`}>Healthcare Products</h1>
+      <h1 className={`text-2xl font-bold ${styles.text} mb-4 text-center`}>Healthcare Products</h1>
 
       {/* Categories and Products */}
       {categories.map((category) => {
@@ -185,16 +185,18 @@ function Product() {
 
         return (
           <div key={category.id} className="mb-6">
-            <h2 className={`text-xl font-bold ${styles.text} mb-2`}>{category.name}</h2>
-            <p className={`text-sm ${styles.text} opacity-80 mb-3`}>{getCategoryDescription(category.id)}</p>
-            <div className="overflow-x-auto scrollbar-hide px-4">
-              <div className="inline-flex space-x-4 mx-auto">
+            <h2 className={`text-xl font-bold ${styles.text} mb-2 text-center`}>{category.name}</h2>
+            <p className={`text-sm ${styles.text} opacity-80 mb-3 text-center`}>{getCategoryDescription(category.id)}</p>
+            <div className="px-4">
+              <div className="flex flex-wrap justify-center gap-10 py-5">
                 {categoryProducts.map((product) => (
                   <div
-                    key={product.id}
-                    className={`${styles.container} rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex-shrink-0 w-64 flex flex-col min-h-96 cursor-pointer`}
-                    onClick={() => setSelectedProduct(product)}
-                  >
+                  key={product.id}
+                  className={`${styles.container} border border-gray-200 rounded-lg shadow-sm overflow-hidden transition-all duration-300 w-64 flex flex-col min-h-96 cursor-pointer hover:shadow-lg hover:border-gray-300 hover:-translate-y-1`}
+                  onClick={() => setSelectedProduct(product)}
+                  onMouseEnter={(e) => e.currentTarget.classList.add('transform', 'scale-[1.02]')}
+                  onMouseLeave={(e) => e.currentTarget.classList.remove('transform', 'scale-[1.02]')}
+                >
                     <div className="relative">
                       <img src={product.image} alt={product.name} className="w-full h-32 object-cover" />
                       {!product.inStock && (
@@ -273,11 +275,11 @@ function Product() {
       {/* Modal for ProductDetails */}
       {selectedProduct && (
         <div
-          className="fixed inset-0 flex items-center justify-center z-50  backdrop-brightness-50"
+          className="fixed inset-0 flex items-center justify-center z-50 backdrop-brightness-50"
           role="dialog"
           aria-labelledby={`modal-title-${selectedProduct.id}`}
         >
-          <div className={`relative bg-white dark:bg-gray-800 rounded-lg shadow-2xl max-w-4xl w-full  ${styles.container}`}>
+          <div className={`relative bg-white dark:bg-gray-800 rounded-lg shadow-2xl max-w-4xl w-full ${styles.container}`}>
             <button
               className={`absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-100 ${styles.text}`}
               aria-label="Close modal"

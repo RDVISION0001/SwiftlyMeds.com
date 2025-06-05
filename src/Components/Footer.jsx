@@ -36,8 +36,8 @@ function Footer() {
             <ul className="text-sm space-y-2">
               <li><a href="/faqs" className="hover:text-blue-300">FAQs</a></li>
               <li><a href="/privacy-policy" className="hover:text-blue-300">Privacy Policy</a></li>
-              <li><a href="/terms" className="hover:text-blue-300">Terms & Conditions</a></li>
-              <li><a href="/returns" className="hover:text-blue-300">Return Policy</a></li>
+              <li><a href="/terms-conditions" className="hover:text-blue-300">Terms & Conditions</a></li>
+              <li><a href="returns-policy" className="hover:text-blue-300">Return Policy</a></li>
               <li><a href="/contact" className="hover:text-blue-300">Contact Us</a></li>
               <li><a href="/about" className="hover:text-blue-300">About Us</a></li>
 

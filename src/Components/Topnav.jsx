@@ -270,7 +270,7 @@ function TopNav() {
 
       {/* SignIn Modal */}
       {isLoginModalOpen && (
-        <div className={`fixed inset-0 flex items-center justify-center z-50 backdrop-brightness-50 ${styles.background}`}>
+        <div className={`fixed inset-0 flex items-center justify-center z-50  backdrop-brightness-50 `}>
           <div className={`relative ${styles.container} rounded-lg p-6`}>
             <SignIn onClose={() => setIsLoginModalOpen(false)} />
           </div>
@@ -279,7 +279,7 @@ function TopNav() {
 
       {/* Sign Up Modal */}
       {isSignUpModalOpen && (
-        <div className={`fixed inset-0 flex items-center justify-center z-50 backdrop-brightness-50 ${styles.background}`}>
+        <div className={`fixed inset-0 flex items-center justify-center z-50  backdrop-brightness-50 `}>
           <div className={`relative ${styles.container} rounded-lg p-6`}>
             <SignUp onClose={() => setIsSignUpModalOpen(false)} />
           </div>

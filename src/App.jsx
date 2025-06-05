@@ -4,13 +4,15 @@ import './App.css';
 import { ThemeProvider } from './Auth/ThemeContext';
 import TopNav from './Components/Topnav';
 import Footer from './Components/Footer';
-import Login from './Auth/SignIn';
 import Home from './Pages/Home';
 
 import AddToCart from './Pages/Products/AddToCart';
 import ContactUs from './Components/ContactUs';
 import AboutUs from './Components/AboutUs';
 import FAQs from './Components/FAQs';
+import PrivacyPolicy from './Components/PrivacyPolicy';
+import TermsConditions from './Components/TermsConditions';
+import ReturnsPolicy from './Components/ReturnsPolicy';
 
 
 function Medicines() {
@@ -67,53 +69,6 @@ function Offers() {
   );
 }
 
-function Cart() {
-  const { styles } = useTheme();
-  return (
-    <div className={`container mx-auto px-4 py-8 ${styles.container}`}>
-      <h2 className={`text-primary ${styles.primary}`}>Cart</h2>
-    </div>
-  );
-}
-
-
-function PrivacyPolicy() {
-  const { styles } = useTheme();
-  return (
-    <div className={`container mx-auto px-4 py-8 ${styles.container}`}>
-      <h2 className={`text-primary ${styles.primary}`}>Privacy Policy</h2>
-    </div>
-  );
-}
-
-function Terms() {
-  const { styles } = useTheme();
-  return (
-    <div className={`container mx-auto px-4 py-8 ${styles.container}`}>
-      <h2 className={`text-primary ${styles.primary}`}>Terms & Conditions</h2>
-    </div>
-  );
-}
-
-function Returns() {
-  const { styles } = useTheme();
-  return (
-    <div className={`container mx-auto px-4 py-8 ${styles.container}`}>
-      <h2 className={`text-primary ${styles.primary}`}>Return Policy</h2>
-    </div>
-  );
-}
-
-
-
-function SignUp() {
-  const { styles } = useTheme();
-  return (
-    <div className={`container mx-auto px-4 py-8 ${styles.container}`}>
-      <h2 className={`text-primary ${styles.primary}`}>Sign Up</h2>
-    </div>
-  );
-}
 
 function ForgotPassword() {
   const { styles } = useTheme();
@@ -139,19 +94,15 @@ function App() {
               <Route path="/lab-tests" element={<LabTests />} />
               <Route path="/consult-doctors" element={<ConsultDoctors />} />
               <Route path="/offers" element={<Offers />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<SignUp />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-              <Route path="/terms" element={<Terms />} />
-              <Route path="/returns" element={<Returns />} />
-
 
               <Route path="/add-to-cart" element={<AddToCart />} />
               <Route path="/contact" element={<ContactUs />} />
               <Route path="/about" element={<AboutUs />} />
               <Route path="/faqs" element={<FAQs />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/returns-policy" element={<ReturnsPolicy />} />
+              <Route path="/terms-conditions" element={<TermsConditions />} />
 
             </Routes>
           </main>

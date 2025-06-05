@@ -8,6 +8,9 @@ import Login from './Auth/SignIn';
 import Home from './Pages/Home';
 
 import AddToCart from './Pages/Products/AddToCart';
+import ContactUs from './Components/ContactUs';
+import AboutUs from './Components/AboutUs';
+import FAQs from './Components/FAQs';
 
 
 function Medicines() {
@@ -73,23 +76,6 @@ function Cart() {
   );
 }
 
-function About() {
-  const { styles } = useTheme();
-  return (
-    <div className={`container mx-auto px-4 py-8 ${styles.container}`}>
-      <h2 className={`text-primary ${styles.primary}`}>About Us</h2>
-    </div>
-  );
-}
-
-function FAQs() {
-  const { styles } = useTheme();
-  return (
-    <div className={`container mx-auto px-4 py-8 ${styles.container}`}>
-      <h2 className={`text-primary ${styles.primary}`}>FAQs</h2>
-    </div>
-  );
-}
 
 function PrivacyPolicy() {
   const { styles } = useTheme();
@@ -118,14 +104,7 @@ function Returns() {
   );
 }
 
-function Contact() {
-  const { styles } = useTheme();
-  return (
-    <div className={`container mx-auto px-4 py-8 ${styles.container}`}>
-      <h2 className={`text-primary ${styles.primary}`}>Contact Us</h2>
-    </div>
-  );
-}
+
 
 function SignUp() {
   const { styles } = useTheme();
@@ -164,15 +143,16 @@ function App() {
               <Route path="/signup" element={<SignUp />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
               <Route path="/cart" element={<Cart />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/faqs" element={<FAQs />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/returns" element={<Returns />} />
-              <Route path="/contact" element={<Contact />} />
 
 
               <Route path="/add-to-cart" element={<AddToCart />} />
+              <Route path="/contact" element={<ContactUs />} />
+              <Route path="/about" element={<AboutUs />} />
+              <Route path="/faqs" element={<FAQs />} />
+
             </Routes>
           </main>
           <Footer />

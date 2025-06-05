@@ -15,7 +15,7 @@ function Footer() {
             <p className="text-sm">Varanasi - 221007, Uttar Pradesh, India</p>
             <p className="text-sm mt-2">
               <a href="tel:+917943438588" className="text-blue-300 hover:text-blue-100">
-              088580 43370
+                088580 43370
               </a>
             </p>
             <p className="text-sm">
@@ -34,12 +34,13 @@ function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="text-sm space-y-2">
-              <li><a href="/about" className="hover:text-blue-300">About Us</a></li>
               <li><a href="/faqs" className="hover:text-blue-300">FAQs</a></li>
               <li><a href="/privacy-policy" className="hover:text-blue-300">Privacy Policy</a></li>
               <li><a href="/terms" className="hover:text-blue-300">Terms & Conditions</a></li>
               <li><a href="/returns" className="hover:text-blue-300">Return Policy</a></li>
               <li><a href="/contact" className="hover:text-blue-300">Contact Us</a></li>
+              <li><a href="/about" className="hover:text-blue-300">About Us</a></li>
+
             </ul>
           </div>
 

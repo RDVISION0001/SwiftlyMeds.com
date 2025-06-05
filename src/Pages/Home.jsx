@@ -13,6 +13,7 @@ function Home() {
     'https://www.netmeds.com/images/cms/aw_rbslider/slides/1743514063_Web_Home-Banner.jpg',
     'https://www.netmeds.com/images/cms/aw_rbslider/slides/1746624933_Web_Home-Banner.jpg',
     'https://www.netmeds.com/images/cms/aw_rbslider/slides/1748706372_Web_Home-Banner.jpg',
+    'https://www.netmeds.com/images/cms/aw_rbslider/slides/1748706183_Web_Home.jpg'
   ];
 
   return (

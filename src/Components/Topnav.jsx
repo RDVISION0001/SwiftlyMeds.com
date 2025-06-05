@@ -27,7 +27,7 @@ function TopNav() {
 
   return (
     <>
-      <nav className={`py-3 shadow-md ${styles.background} ${styles.text}`}>
+      <nav className={`py-3 shadow-md sticky top-0 w-full z-50 ${styles.background} ${styles.text}`}>
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
             {/* Logo and Delivery Address */}
